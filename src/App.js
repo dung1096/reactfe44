@@ -8,6 +8,8 @@ import RenderWithMap from "./RenderWithMap/RenderWithMap.js";
 import EXRenderMap from "./RenderWithMap/EXRenderMap.js";
 import DemoProps from "./Props/DemoProps.js";
 import BT2ProductList from "./Props/BT2ProductList/BT2ProductList.js";
+import DemoPropsFunction from "./DemoPropsFunction/DemoPropsFunction.js";
+import BTGioHang from "./Props/BTGioHang/BTGioHang.js";
 export default function App() {
   return (
     <div className="App">
@@ -19,7 +21,9 @@ export default function App() {
       {/* <RenderWithMap /> */}
       {/* <EXRenderMap /> */}
       {/* <DemoProps /> */}
-      <BT2ProductList />
+      {/* <BT2ProductList /> */}
+      {/* <DemoPropsFunction /> */}
+      <BTGioHang />
     </div>
   );
 }
