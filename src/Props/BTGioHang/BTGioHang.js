@@ -8,8 +8,6 @@ export default class BTGioHang extends Component {
   };
 
   themGioHang = (sanPhamClick) => {
-    console.log(sanPhamClick);
-
     //Từ sp dc click tạo ra sp giỏ hàng
     let spGioHang = {
       maSP: sanPhamClick.maSP,
@@ -29,6 +27,37 @@ export default class BTGioHang extends Component {
       gioHangCapNhap[index].soLuong += 1;
     } else {
       gioHangCapNhap.push(spGioHang);
+    }
+    this.setState({
+      gioHang: gioHangCapNhap,
+    });
+  };
+
+  //
+  xoaGioHang = (maSP) => {
+    let gioHangCapNhap = [...this.state.gioHang];
+
+    let index = gioHangCapNhap.findIndex(
+      (spGioHang) => spGioHang.maSP === maSP
+    );
+    if (index !== -1) {
+      gioHangCapNhap.splice(index, 1);
+    }
+    this.setState({
+      gioHang: gioHangCapNhap,
+    });
+  };
+
+  tangGiamSoLuong = (maSP, bool) => {
+    let gioHangCapNhap = [...this.state.gioHang];
+    let index = gioHangCapNhap.findIndex(
+      (spGioHang) => spGioHang.maSP === maSP
+    );
+    if (index !== -1 && bool === true) {
+      gioHangCapNhap[index].soLuong++;
+    }
+    if (index !== -1 && bool === false && gioHangCapNhap[index].soLuong > 1) {
+      gioHangCapNhap[index].soLuong--;
     }
     this.setState({
       gioHang: gioHangCapNhap,
@@ -77,7 +106,11 @@ export default class BTGioHang extends Component {
     return (
       <div className="container">
         <DSSP themGioHang={this.themGioHang} mangSanPham={this.arrProduct} />
-        <ModalGH gioHang={this.state.gioHang} />
+        <ModalGH
+          tangGiamSoLuong={this.tangGiamSoLuong}
+          xoaGioHang={this.xoaGioHang}
+          gioHang={this.state.gioHang}
+        />
       </div>
     );
   }

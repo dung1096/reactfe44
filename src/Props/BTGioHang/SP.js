@@ -5,7 +5,11 @@ export default class extends Component {
     let { sanPham } = this.props;
     return (
       <div className="card">
-        <img className="card-img-top img-fluid" src={sanPham.hinhAnh} alt />
+        <img
+          className="card-img-top img-fluid"
+          src={sanPham.hinhAnh}
+          alt={sanPham.hinhAnh}
+        />
         <div className="card-body">
           <h4 className="card-title">{sanPham.tenSP}</h4>
           <p className="card-text">{sanPham.giaBan}</p>

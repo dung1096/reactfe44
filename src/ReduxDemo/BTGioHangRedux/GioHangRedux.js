@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export default class ModalGH extends Component {
+class GioHangRedux extends Component {
   renderGioHang = () => {
     let { gioHang } = this.props;
 
@@ -27,8 +28,8 @@ export default class ModalGH extends Component {
               +
             </button>
           </td>
-          <td>{sanPhamGH.gia.toLocaleString()}</td>
-          <td>{(sanPhamGH.soLuong * sanPhamGH.gia).toLocaleString()}</td>
+          <td>{sanPhamGH.giaBan.toLocaleString()}</td>
+          <td>{(sanPhamGH.soLuong * sanPhamGH.giaBan).toLocaleString()}</td>
 
           <td>
             <button
@@ -42,39 +43,33 @@ export default class ModalGH extends Component {
       );
     });
   };
-  tinhtongtien = () => {
-    let { gioHang } = this.props;
-    return gioHang.reduce((tongTien, spGH, index) => {
-      return (tongTien += spGH.soLuong * spGH.gia);
-    }, 0);
-  };
-
   render() {
     return (
-      <div className="container">
+      <div>
         <h3>Giỏ hàng</h3>
         <table className="table">
           <thead>
             <tr>
               <th>Mã SP</th>
               <th>Tên SP</th>
-              <th>Hình Ảnh</th>
+              <th>Hình ảnh</th>
               <th>Số lượng</th>
-              <th>Đơn giá</th>
+              <th>Giá Bán</th>
               <th>Thành tiền</th>
               <th></th>
             </tr>
           </thead>
           <tbody>{this.renderGioHang()}</tbody>
-          <tfoot>
-            <tr>
-              <td colSpan="5"></td>
-              <td>Tổng tiền</td>
-              <td>{this.tinhtongtien().toLocaleString()}</td>
-            </tr>
-          </tfoot>
         </table>
       </div>
     );
   }
 }
+//Hàm có nv biển đổi statr của redux trở thành props của components
+const mapStateToProps = (state) => {
+  //state ứng với rootReducer
+  return {
+    gioHang: state.stateGioHangReducer.stateGioHang,
+  };
+};
+export default connect(mapStateToProps)(GioHangRedux);

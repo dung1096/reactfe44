@@ -10,6 +10,8 @@ import DemoProps from "./Props/DemoProps.js";
 import BT2ProductList from "./Props/BT2ProductList/BT2ProductList.js";
 import DemoPropsFunction from "./DemoPropsFunction/DemoPropsFunction.js";
 import BTGioHang from "./Props/BTGioHang/BTGioHang.js";
+import BTGioHangRedux from "./ReduxDemo/BTGioHangRedux/BTGioHangRedux.js";
+
 export default function App() {
   return (
     <div className="App">
@@ -23,7 +25,8 @@ export default function App() {
       {/* <DemoProps /> */}
       {/* <BT2ProductList /> */}
       {/* <DemoPropsFunction /> */}
-      <BTGioHang />
+      {/* <BTGioHang /> */}
+      <BTGioHangRedux />
     </div>
   );
 }
